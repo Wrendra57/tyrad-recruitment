@@ -1,0 +1,201 @@
+.body {
+    display: flex;
+    flex-direction: row;
+}
+.body>:first-child {
+    width: 100px;
+    height: 100vh;
+    position: fixed;
+}
+.main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: 100px;
+    /* position: relative; */
+    /* left: 100px; */
+}
+.main > :first-child {
+    /* background-color: var(--cold-steel); */
+    flex: 75%;
+    width: 100%;
+    padding: 15px;
+}
+
+.main > :last-child {
+    background-color: white;
+    flex: 25%;
+    width: 100%;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.section1 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* gap: 5px; */
+    
+}
+.section1>* {
+    width: 49%;
+    margin: 1px;
+}
+
+.image {
+    background-color: aqua;
+    width: 60px;
+    height: 30px;
+}
+.balanced_stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.balanced_stat>:first-child {
+    width: 25%;
+    /* background-color: red; */
+}
+.statistic{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+.statistic >*{
+   margin-bottom: 5px;
+}
+.section_coin {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* gap: 5px; */
+}
+.coin {
+    width: 40px;
+    height: 40px;
+    margin-right: 3px;
+}
+.line {
+    
+    display: flex;
+    
+    align-items: center;
+    gap: 5px;
+    border-top: 2px solid gray;
+    padding-top: 5px;
+}
+.line>:first-child {
+    /* height: 100%; */
+    width: 70% !important;
+    height: auto !important;
+    flex-shrink: 0
+  
+}
+.statistic_2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    gap: 10px;
+    width: 80%;
+    height: 100%;
+    
+}
+.statistic_2 > :first-child{
+width: 25%;
+}
+.statistic_2 > :nth-child(2){
+width: 90% !important;
+height: 100%;
+}
+
+.CardVisa{
+    background-color: #535ce5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* width: 100%; */
+    height: 100% !important;
+    border-radius: 10px;
+    padding: 15px;
+    background-image: url("../../assets//images/kartun.png") !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+    min-height:285px;
+    color: white;
+}
+
+.CardVisa>:first-child{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CardVisa>:last-child>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.section2 {
+    display: flex;
+    flex-direction: row;
+
+}
+.section2 >* {
+    width: 50%;
+}
+
+
+
+ /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 768px) {
+    .main > :first-child {
+    flex: 100%;
+}
+.main > :last-child {
+    flex: 100%; 
+}
+.header>div>h1 {
+    font-size: larger;
+    
+}
+.header>div>p {
+    font-size: small;
+}
+.section1 {
+    flex-direction: column;
+}
+.section1>* {
+    width: 100%;
+}
+.balanced_stat{
+    flex-direction: column;
+}
+.balanced_stat>*{
+    width: 100% !important;
+}
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+ 

@@ -6,25 +6,57 @@ import { LuClock9, LuLogOut, LuWallet } from "react-icons/lu";
 import { BsPeople } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import ProfilePict from "../../assets/images/profile.jpg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 function SidebarComponent() {
-  // const [tab, setTab] = useState(1);
+  const [tab, setTab] = useState(0);
+  // const [tab,setTab]
   const [pos, setPos] = useState(295);
-  const handleChaneMenu = async ({ newPos, bp, tp }) => {
+  const reff = useRef([]);
+
+  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  useEffect(() => {
+    console.log(tab);
     let highlighter = document.querySelector(".highlighter");
-    console.log(highlighter);
-    if (parseInt(newPos) > parseInt(pos)) {
-      highlighter.style.top = tp;
+    const componentRef = reff.current[0];
+    const { top, bottom } = componentRef.getBoundingClientRect();
+    highlighter.style.top = `${top + tab * 60}px`;
+    highlighter.style.bottom = `${viewportHeight - bottom + tab * 60}px`;
+    // Calculate vh value based on viewport height
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewportHeight]);
+
+  const handleChaneMenu = async ({ ref }) => {
+    setTab(ref);
+    const componentRef = reff.current[ref];
+    const { top, bottom } = componentRef.getBoundingClientRect();
+    console.log(top, bottom);
+
+    let highlighter = document.querySelector(".highlighter");
+
+    if (parseInt(top) > parseInt(pos)) {
+      highlighter.style.top = `${top}px`;
       setTimeout(function () {
-        highlighter.style.bottom = bp;
+        highlighter.style.bottom = `${viewportHeight - bottom}px`;
       }, 200);
     } else {
-      highlighter.style.bottom = bp;
+      highlighter.style.bottom = `${viewportHeight - bottom}px`;
       setTimeout(function () {
-        highlighter.style.top = tp;
+        highlighter.style.top = `${top}px`;
       }, 200);
     }
-    setPos(newPos);
+    setPos(top);
   };
 
   return (
@@ -37,68 +69,60 @@ function SidebarComponent() {
         <span
           onClick={() =>
             handleChaneMenu({
-              newPos: 527,
-              bp: "527px",
-              tp: "295px",
+              ref: 0,
             })
           }
+          ref={(ref) => (reff.current[0] = ref)}
         >
           <RiHome3Line />
         </span>
         <span
           onClick={() =>
             handleChaneMenu({
-              newPos: 587,
-              bp: "587px",
-              tp: "355px",
+              ref: 1,
             })
           }
+          ref={(ref) => (reff.current[1] = ref)}
         >
           <FaRegBell />
         </span>
         <span
           onClick={() =>
             handleChaneMenu({
-              newPos: 652,
-              bp: "652px",
-
-              tp: "415px",
+              ref: 2,
             })
           }
+          ref={(ref) => (reff.current[2] = ref)}
         >
           <LuClock9 />
         </span>
         <span
           onClick={() =>
             handleChaneMenu({
-              newPos: 707,
-              bp: "707px",
-
-              tp: "475px",
+              ref: 3,
             })
           }
+          ref={(ref) => (reff.current[3] = ref)}
         >
           <BsPeople />
         </span>
         <span
           onClick={() =>
             handleChaneMenu({
-              newPos: 767,
-              bp: "767px",
-              tp: "535px",
+              ref: 4,
             })
           }
+          ref={(ref) => (reff.current[4] = ref)}
         >
           <LuWallet />
         </span>
         <span
           onClick={() =>
             handleChaneMenu({
-              newPos: 827,
-              bp: "827px",
-              tp: "595px",
+              ref: 5,
             })
           }
+          ref={(ref) => (reff.current[5] = ref)}
         >
           <IoSettingsOutline />
         </span>
